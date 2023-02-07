@@ -7,4 +7,4 @@ const Persons = ({persons, query}) => {
 
     )
 }
- export default Persons
+export default Persons
