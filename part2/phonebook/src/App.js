@@ -1,89 +1,125 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import PersonsForm from "./components/PersonsForm"
 import Persons from "./components/Persons";
 import Filter from "./components/Filter";
+import phonebookService from "./services/phonebookService";
+import axios from "axios";
 
 const App = (searchElement, fromIndex) => {
 
+    const [persons, setPersons] = useState([])
+    const [newName, setNewName] = useState('');
+    const [newNumber, setNewNumber] = useState('');
 
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-5323523', id: 1 },
-    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
-    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
-    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
-  ])
+    //For handling searching
+    const [query, setQuery] = useState('');
 
-  const [newName, setNewName] = useState('');
-  const [newNumber, setNewNumber] = useState('');
+    useEffect(() => {
+        phonebookService
+            .getAll()
+            .then(initialPhonebook => {
+                setPersons(initialPhonebook)
+            })
+    }, [])
 
-  //For handling seraching
-  const [query, setQuery]  = useState('');
+    const addName = (event) => {
+        event.preventDefault()
 
-  const addName = (event) => {
-    event.preventDefault()
-    const nameObject = {
-      name: newName,
-      number: newNumber,
-      id: persons.length + 1,
+        const newPerson = persons.filter(person => person.name === newName)
+        const toAdd = newPerson[0]
+        const forUpdate = { ...toAdd, number: newNumber}
+
+        if (persons.some(person => person.name === newName && person.number === newNumber)) {
+            alert(`${newName} is already added to phonebook`)
+            setNewName('')
+            setNewNumber('')
+
+        }
+
+        else if (persons.some(person => person.name === newName && person.number !== newNumber)) {
+            window.confirm(`${newName} is already added to phonebook, replace the old number with a new one`)
+            console.log(forUpdate)
+            phonebookService
+                .update(forUpdate.id, forUpdate).then(returnedName => {
+                setPersons(persons.concat(returnedName))
+            })
+        }
+
+        else {
+
+            const nameObject = {
+                name: newName,
+                number: newNumber,
+            }
+            phonebookService
+                .create(nameObject)
+                .then(returnedName => {
+                    setPersons(persons.concat(returnedName))
+                })
+            setNewName('')
+            setNewNumber('')
+        }
+
+
+    }
+    const deleteName = (id) => {
+        const toBeDeleted = persons.filter(person => person.id === id)
+
+        if (window.confirm(`delete ${toBeDeleted[0].name} ?`) ) {
+            phonebookService
+                .deleteName(`${id}`)
+            setPersons(persons.filter(person => person.id !== id))
+        }
+
+
 
     }
 
-    if (persons.some(person => person.name === newName)) {
-      alert(`${newName} is already added to phonebook`)
-      setNewName('')
-      setNewNumber('')
+    const filteredName = (event) => {
+        event.preventDefault()
 
-    } else {
-      setPersons(persons.concat(nameObject))
-      setNewName('')
-      setNewNumber('')
+
+    }
+    const handleNameChange = (event) => {
+        setNewName((event.target.value))
+
     }
 
-  }
+    const handleNumberChange = (event) => {
+        setNewNumber((event.target.value))
 
-  const filteredName = (event) => {
-    event.preventDefault()
+    }
 
+    // To handle the filtering
+    const handleFiltering = (event) => {
+        setQuery(event.target.value)
 
-  }
-  const handleNameChange = (event) => {
-    setNewName((event.target.value))
+        const results = persons.filter(person => {
+            if (event.target.value === "") return persons
+            return person.name.toLowerCase().includes(event.target.value)
+        })
 
-  }
+        setPersons(results)
+    }
 
-  const handleNumberChange = (event) => {
-    setNewNumber((event.target.value))
+    return (
+        <div>
+            <h2>Phonebook</h2>
+            <Filter onChange={handleFiltering} value={query}/>
+            <h2>add a new</h2>
+            <PersonsForm
 
-  }
-
-  // To handle the filtering
-  const handleFiltering = (event) => {
-    setQuery(event.target.value)
-
-    const results = persons.filter(person => {
-      if (event.target.value === "") return persons
-      return person.name.toLowerCase().includes(event.target.value)
-    })
-
-    setPersons(results)
-  }
-
-  return (
-      <div>
-        <h2>Phonebook</h2>
-        <Filter onChange={handleFiltering} value={query}/>
-        <h2>add a new</h2>
-        <PersonsForm
-            onSubmit={addName}
-            nameValue={newName}
-            numberValue={newNumber}
-            onNameChange={handleNameChange}
-            onNumberChange={handleNumberChange}
-        />
-        <h2>Numbers</h2>
-        <Persons persons={persons} />
-      </div>
-  )
+                onClick={addName}
+                onSubmit={addName}
+                nameValue={newName}
+                numberValue={newNumber}
+                onNameChange={handleNameChange}
+                onNumberChange={handleNumberChange}
+            />
+            <h2>Numbers</h2>
+            <Persons persons={persons} deleteName={deleteName}/>
+        </div>
+    )
 }
 
 export default App

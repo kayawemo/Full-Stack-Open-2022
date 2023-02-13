@@ -5,34 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cc04ede-17e4-4bd8-9ae8-d1960e566838" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../notes/src/services/noteService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/phonebookService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../notes/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../notes/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../notes/src/components/Note.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../notes/src/components/Note.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../part1/courseinfo/courseinfo/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../part1/courseinfo/courseinfo/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../courseinfo/.idea/courseinfo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../courseinfo/.idea/courseinfo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../courseinfo/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../courseinfo/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Persons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Persons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PersonsForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PersonsForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2LOcFjow4XHfz2vshDtYSgj5bzf" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
@@ -57,6 +73,9 @@
       <option name="presentableId" value="Default" />
       <updated>1675745467833</updated>
       <workItem from="1675745468892" duration="1888000" />
+      <workItem from="1675832329174" duration="489000" />
+      <workItem from="1675876395563" duration="2989000" />
+      <workItem from="1675880017459" duration="22418000" />
     </task>
     <servers />
   </component>

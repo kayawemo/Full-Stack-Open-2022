@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-const PersonsForm = ({onSubmit,nameValue, onNameChange, numberValue, onNumberChange, onClick}) => {
+const PersonsForm = ({ onSubmit,nameValue, onNameChange, numberValue, onNumberChange, onClick}) => {
 
     return(
         <form onSubmit={onSubmit}>

@@ -1,10 +1,5 @@
 {
-  "persons":[
-    {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": 1
-    },
+  "persons": [
     {
       "name": "Ada Lovelace",
       "number": "39-44-5323523",
@@ -19,6 +14,36 @@
       "name": "Mary Poppendieck",
       "number": "39-23-6423122",
       "id": 4
+    },
+    {
+      "name": "Kayode Awe",
+      "number": "4242424242",
+      "id": 5
+    },
+    {
+      "name": "Wess",
+      "number": "John",
+      "id": 6
+    },
+    {
+      "name": "Toyin Awe",
+      "number": "5874328322",
+      "id": 7
+    },
+    {
+      "name": "John Bull",
+      "number": "555555555555",
+      "id": 9
+    },
+    {
+      "name": "Magna Roy",
+      "number": "44444444444444",
+      "id": 10
+    },
+    {
+      "name": "Van Bastem",
+      "number": "333333333",
+      "id": 11
     }
   ]
 }
