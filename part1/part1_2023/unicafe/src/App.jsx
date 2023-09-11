@@ -18,11 +18,28 @@ const Button = (props) => {
   );
 };
 
+const StatisticLine = (props) => {
+  return (
+    <div>
+      {props.text} {props.value}
+    </div>
+  )
+}
+
 const Statistics = (props) => {
   const all = props.count1 + props.count2 + props.count3;
   const average =
     (props.count1 * 1 + props.count2 * 0 + props.count3 * -1) / all;
   const positive = props.count1 / all;
+
+  if (props.count1 == 0 && props.count2 == 0 & props.count3 == 0) {
+    return (
+      <div>
+        No feedback given
+      </div>
+    )
+
+  }
   return (
     <div>
       <p>
