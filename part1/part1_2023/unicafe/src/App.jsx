@@ -9,13 +9,20 @@ const Header = (props) => {
 };
 
 const Button = (props) => {
-  return <button onClick={props.handleFeedback}>{props.text}</button>;
+  return (
+    <div>
+      <button onClick={props.handleGoodFeedback}>good</button>
+      <button onClick={props.handleNeutralFeedback}>neutral</button>
+      <button onClick={props.handleBadFeedback}>bad</button>
+    </div>
+  );
 };
 
 const Statistics = (props) => {
-  const all = props.count1 + props.count2 + props.count3
-  const average =(props.count1 * 1 + props.count2 * 0 + props.count3 * -1) / all
-  const positive = props.count1 / all
+  const all = props.count1 + props.count2 + props.count3;
+  const average =
+    (props.count1 * 1 + props.count2 * 0 + props.count3 * -1) / all;
+  const positive = props.count1 / all;
   return (
     <div>
       <p>
@@ -55,13 +62,20 @@ const App = () => {
 
   return (
     <div>
-      <Header name={"give feedback"} />
-      <Button handleFeedback={handleGoodFeedback} text="good" />
-      <Button handleFeedback={handleNeutralFeedback} text={"neutral"} />
-      <Button handleFeedback={handleBadFeedback} text={"bad"} />
+      <Header name="give feedback" />
+      <Button
+        handleGoodFeedback={handleGoodFeedback}
+        handleNeutralFeedback={handleNeutralFeedback}
+        handleBadFeedback={handleBadFeedback}
+      />
       <Header name={"statistics"} />
-      <Statistics feedback1="good" feedback2="neutral" feedback3="bad"
-              count1={good} count2={neutral} count3={bad}
+      <Statistics
+        feedback1="good"
+        feedback2="neutral"
+        feedback3="bad"
+        count1={good}
+        count2={neutral}
+        count3={bad}
       />
     </div>
   );
