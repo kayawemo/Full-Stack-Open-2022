@@ -21,10 +21,10 @@ const Button = (props) => {
 const StatisticLine = (props) => {
   return (
     <div>
-      {props.text} {props.value}
+      {props.text} {props.value} {props.extra}
     </div>
-  )
-}
+  );
+};
 
 const Statistics = (props) => {
   const all = props.count1 + props.count2 + props.count3;
@@ -32,28 +32,45 @@ const Statistics = (props) => {
     (props.count1 * 1 + props.count2 * 0 + props.count3 * -1) / all;
   const positive = props.count1 / all;
 
-  if (props.count1 == 0 && props.count2 == 0 & props.count3 == 0) {
-    return (
-      <div>
-        No feedback given
-      </div>
-    )
-
+  if (props.count1 == 0 && (props.count2 == 0) & (props.count3 == 0)) {
+    return <div>No feedback given</div>;
   }
   return (
     <div>
-      <p>
-        {props.feedback1} {props.count1}
-      </p>
-      <p>
-        {props.feedback2} {props.count2}
-      </p>
-      <p>
-        {props.feedback3} {props.count3}
-      </p>
-      <p>all {all}</p>
-      <p>average {average}</p>
-      <p>positive {positive} % </p>
+      <table>
+        <tbody>
+          <tr>
+            <td style={{ textAlign: 'left'}}>
+              <StatisticLine text="good" value={props.count1} />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ textAlign: 'left'}}>
+              <StatisticLine text="neutral" value={props.count2} />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ textAlign: 'left'}}>
+              <StatisticLine text="bad" value={props.count3} />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ textAlign: 'left'}}>
+              <StatisticLine text="all" value={all} />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ textAlign: 'left'}}>
+              <StatisticLine text="average" value={average} />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ textAlign: 'left'}}>
+              <StatisticLine text="positive" value={positive} extra='%'/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
@@ -86,14 +103,7 @@ const App = () => {
         handleBadFeedback={handleBadFeedback}
       />
       <Header name={"statistics"} />
-      <Statistics
-        feedback1="good"
-        feedback2="neutral"
-        feedback3="bad"
-        count1={good}
-        count2={neutral}
-        count3={bad}
-      />
+      <Statistics count1={good} count2={neutral} count3={bad} />
     </div>
   );
 };
