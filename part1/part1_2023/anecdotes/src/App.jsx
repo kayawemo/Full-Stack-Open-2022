@@ -6,6 +6,14 @@ const Button = (props) => {
   )
 }
 
+const Vote = (props) => {
+  return(
+    <div>has {props.value} votes</div>
+  )
+}
+
+
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -19,7 +27,9 @@ const App = () => {
   ]
 
   const [selected, setSelected] = useState(0)
-
+  const votes = Array(anecdotes.length).fill(0)
+  const copyVotes = [...votes]
+  
   //event handler
   const handleSelection = () => {
     const randomIndex = Math.floor(Math.random() * anecdotes.length)
@@ -27,10 +37,18 @@ const App = () => {
 
   }
 
+  const handleVotes =() => {
+    copyVotes[selected] +=1
+    console.log(copyVotes[selected])
+    console.log(copyVotes)
+    
+  }
+
   return (
     <div>
       <div><p>{anecdotes[selected]}</p></div>
-      <Button text='vote'/>
+      <Vote value={copyVotes[selected]}/>
+      <Button handleSelection={handleVotes} text='vote' />
       <Button handleSelection={handleSelection} text='next anedote' />
     </div>
   )
