@@ -56,11 +56,6 @@ const App = () => {
             newNumber={newNumber} handlePersonChange={handlePersonChange} 
       />
       <h2>Numbers</h2>
-      {/* {filteredNames.map((person) => (
-        <div key={person.id}>
-          {person.name} {person.number}
-        </div>
-      ))} */}
     <Persons filteredNames={filteredNames}/>
     </div>
   );
