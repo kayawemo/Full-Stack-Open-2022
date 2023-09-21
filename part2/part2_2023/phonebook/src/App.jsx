@@ -3,12 +3,16 @@ import Filter from "./components/Filter";
 import Form from "./components/Form";
 import Persons from "./components/Persons";
 import phonebookServices from "../services/phonebook";
+import Notification from "./components/Notification.jsx";
+import ErrorMessage from "./components/ErrorMessage.jsx";
 
 const App = () => {
     const [persons, setPersons] = useState([]);
     const [newName, setNewName] = useState("");
     const [newNumber, setNewNumber] = useState("");
     const [searchName, setSearchName] = useState("");
+    const [notification, setNotification] = useState("");
+    const [error, setError] = useState("");
 
     //Get the names in the phonebook
     useEffect(() => {
@@ -36,9 +40,18 @@ const App = () => {
             phonebookServices
                 .update(forUpdate.id, forUpdate)
                 .then(returnedName => {
-                    // setPersons(persons.concat(returnedName))
                     setPersons(persons.map((person) => person.id === forUpdate.id ? returnedName : person))
-                })
+                    setNotification(`${forUpdate.name}'s number updated`)
+                    setTimeout(() => {
+                        setNotification(null)
+                    }, 5000)
+                }).catch(error => {
+                    setNotification(`Information of ${forUpdate.name} has already been removed from server`)
+                setTimeout(() => {
+                    setNotification(null)
+                }, 5000)
+                setPersons(persons.filter(n => n.id !== forUpdate.id))
+            })
         } else {
             const nameObject = {
                 name: newName,
@@ -50,7 +63,10 @@ const App = () => {
                 .then(returnedName => {
                     setPersons(persons.concat(returnedName))
                 })
-
+            setNotification(` Added ${nameObject.name}`)
+            setTimeout(() => {
+                setNotification(null)
+            }, 5000)
         }
         setNewName("");
         setNewNumber("");
@@ -85,6 +101,7 @@ const App = () => {
     return (
         <div>
             <h2>Phonebook</h2>
+            <Notification message={notification}/>
             <Filter searchName={searchName} onChange={handleSearchChange}/>
             <Form
                 addName={addName}
