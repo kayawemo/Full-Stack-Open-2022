@@ -3,8 +3,8 @@ const app = express()
 const morgan = require('morgan');
 const {request} = require("express");
 
-//middlewares
- //Needed for POST request
+const cors = require('cors')
+app.use(cors())
 
 //Define a custom format
 const myFormat = ':method :url :status - :response-time ms  :request-body';
@@ -132,7 +132,7 @@ app.post('/api/persons', (request, response) => {
 })
 
 //Start the server
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
