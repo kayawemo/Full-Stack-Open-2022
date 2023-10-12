@@ -2,17 +2,19 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan');
 const {request} = require("express");
-
 const cors = require('cors')
+
 app.use(cors())
 app.use(express.static('dist'))
+app.use(morgan(myFormat));
+app.use(express.json())
+app.use(express.static('build'))
 
 //Define a custom format
 const myFormat = ':method :url :status - :response-time ms  :request-body';
 
 morgan.token('request-body', (request) => JSON.stringify(request.body));
-app.use(morgan(myFormat));
-app.use(express.json())
+
 
 
 
