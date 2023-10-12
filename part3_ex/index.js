@@ -4,7 +4,14 @@ const morgan = require('morgan');
 const {request} = require("express");
 
 const cors = require('cors')
-app.use(cors())
+
+const corsOptions = {
+    origin: 'https://phonebook-yajb.onrender.com',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // If your API uses cookies or sessions
+};
+
+app.use(cors(corsOptions))
 app.use(express.static('dist'))
 
 //Define a custom format
