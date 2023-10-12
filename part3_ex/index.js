@@ -5,6 +5,7 @@ const {request} = require("express");
 
 const cors = require('cors')
 app.use(cors())
+app.use(express.static('dist'))
 
 //Define a custom format
 const myFormat = ':method :url :status - :response-time ms  :request-body';
