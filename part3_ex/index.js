@@ -8,7 +8,7 @@ app.use(cors())
 app.use(express.static('dist'))
 app.use(morgan(myFormat));
 app.use(express.json())
-app.use(express.static('build'))
+//app.use(express.static('build'))
 
 //Define a custom format
 const myFormat = ':method :url :status - :response-time ms  :request-body';
