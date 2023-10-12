@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import Filter from "./components/Filter";
 import Form from "./components/Form";
 import Persons from "./components/Persons";
-import phonebookServices from "../services/phonebook";
+import phonebookServices from "./services/phonebook";
 import Notification from "./components/Notification.jsx";
 import ErrorMessage from "./components/ErrorMessage.jsx";
 
