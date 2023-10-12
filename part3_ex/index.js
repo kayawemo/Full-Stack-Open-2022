@@ -6,7 +6,10 @@ const cors = require('cors')
 //Define a custom format
 const myFormat = ':method :url :status - :response-time ms  :request-body';
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://phonebook-6x70.onrender.com',
+    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Private-Network'],
+}));
 app.use(express.static('dist'))
 app.use(morgan(myFormat));
 app.use(express.json())
