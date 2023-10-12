@@ -7,7 +7,7 @@ const cors = require('cors')
 const myFormat = ':method :url :status - :response-time ms  :request-body';
 
 app.use(cors({
-    origin: 'https://phonebook-6x70.onrender.com',
+    origin: 'process.env.ALLOWED_ORIGINS',
     allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Private-Network'],
 }));
 app.use(express.static('dist'))
